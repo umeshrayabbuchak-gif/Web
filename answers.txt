@@ -1,0 +1,6 @@
+/* This file will automatically be filled with Ruchika's quiz answers 
+    by the 'save_answers.php' script. 
+    
+    Prem, remember to check your server permissions (CHMOD) to ensure 
+    the file is writable by the web server (e.g., 644 or 777 depending on host).
+*/
