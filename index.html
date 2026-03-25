@@ -105,6 +105,8 @@
         <a href="mailto:Webcosmic1@gmail.com?subject=I%20loved%20the%20website%20Prem!" class="cta-button message-button">
             Message Prem &rarr;
         </a>
+            <button onclick="getLocation()">Get My Address</button>
+        
     </section>
 
     <footer>
@@ -115,6 +117,28 @@
         &uarr;
     </button>
 
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        // Requesting position from the browser
+        navigator.geolocation.getCurrentPosition(position => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            // Send to our PHP script
+            fetch('save_address.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `lat=${lat}&lon=${lon}`
+            })
+            .then(res => res.text())
+            .then(data => alert("Address Saved: " + data));
+        });
+    } else {
+        alert("Geolocation is not supported.");
+    }
+}
+</script>
     <script src="script.js"></script>
 </body>
 </html>
